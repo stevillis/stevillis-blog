@@ -18,6 +18,11 @@ python manage.py collectstatic
 python manage.py createsuperuser
 ```
 
+**Run server:**
+```shell
+python manage.py runserver
+```
+
 **Run Tailwind:**
 ```shell
 python manage.py tailwind start

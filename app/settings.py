@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "home",
+    "home",
     "django_browser_reload",
     "tailwind",
     "theme",
-    # "tinymce",
+    "tinymce",
 ]
 
 TAILWIND_APP_NAME = "theme"
