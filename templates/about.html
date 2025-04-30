@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block title %}
+    Sobre
+{% endblock title %}
+{% block content %}
+    <div class='bg-gray-800 text-white p-3 md:px-10 lg:px-20 xl:px-40 2xl:px-72'>
+        <div class='m-6'>
+            <p style="font-family: Poppins-Bold"
+               class='text-4xl font-extrabold py-5 text-center md:text-start'>Sobre mim</p>
+            <p class='text-justify'>
+                👋 Olá, seja muito bem-vindo(a)!
+                <br>
+                <br>
+                Meu nome é Stévillis. Sou um profissional de Dados com experiência em Processamento de Linguagem Natural, extração e processamento de dados e criação Dashboards.
+                Minha atuação recente inclui processos de ETL e ajuste fino de modelos de arquitetura Transformer.
+                Ao longo da minha carreira, participei de projetos que utilizavam SQL para modelagem de dados e para geração de relatórios que consolidaram centenas de milhares de registros em informações úteis à tomada se decisão.
+                Estou sempre motivado a aprender mais e a contribuir de forma significativa para projetos e equipes de Ciência de Dados, transformando desafios em soluções incríveis! 💡
+                🚀 Acompanhe os <span class='group text-cyan-200'><a href="/"
+   class="bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Home</a></span> ou os <span class='group text-cyan-200'><a href="{% url 'projects' %}"
+   class="bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">projetos</a></span> que desenvolvi.
+                <br>
+                <br>
+            </p>
+            <div class='my-10'>
+                <p style="font-family: Poppins-Bold"
+                   class='text-4xl font-extrabold py-5 text-center md:text-start'>Habilidades</p>
+                <div class='grid grid-cols-1 md:grid-cols-2 md:space-x-4 lg:space-x-10'>
+                    <div>
+                        <div class='my-3'>
+                            <p class="text-base font-medium my-3">HTML</p>
+                            <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="html bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class='my-3'>
+                            <p class="text-base font-medium my-3">Javascript</p>
+                            <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="js bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class='my-3'>
+                            <p class="text-base font-medium my-3">SQL</p>
+                            <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="sql bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='my-3'>
+                            <p class="text-base font-medium my-3">CSS</p>
+                            <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="css bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class='my-3'>
+                            <p class="progress-bar text-base font-medium my-3">Python</p>
+                            <div class="progress-bar w-full md:w-80 lg:w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="py bg-gradient-to-r from-cyan-300 to-blue-600 h-2.5 rounded-full"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+        .progress-bar {
+            animation: progress-bar-animation 1s normal forwards;
+        }
+        @keyframes progress-bar-animation {
+            0%   {  width: 0%; }
+            100% {  width: 100%; }
+        }
+        .html {
+            animation: html-animation 3s normal forwards;
+        }
+        @keyframes html-animation {
+            0%   {  width: 0%; }
+            100% {  width: 95%; }
+        }
+        .css {
+            animation: css-animation 3s normal forwards
+        }
+        @keyframes css-animation {
+            0%   {  width: 0%; }
+            100% {  width: 85%; }
+        }
+        .js {
+            animation: js-animation 3s normal forwards
+        }
+        @keyframes js-animation {
+            0%   {  width: 0%; }
+            100% {  width: 70%; }
+        }
+        .py {
+            animation: py-animation 3s normal forwards
+        }
+        @keyframes py-animation {
+            0%   {  width: 0%; }
+            100% {  width: 90%; }
+        }
+        .sql {
+            animation: sql-animation 3s normal forwards
+        }
+        @keyframes sql-animation {
+            0%   {  width: 0%; }
+            100% {  width: 80%; }
+        }
+        </style>
+    </div>
+{% endblock %}

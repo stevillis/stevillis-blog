@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    Contato
+{% endblock title %}
+{% block content %}
+    <div class="bg-gray-800 text-white p-3 md:px-10 lg:px-20 xl:px-40 2xl:px-72">
+        <p style="font-family: Poppins-Bold"
+           class="text-4xl font-extrabold py-5 text-center md:text-start">📬 Entre em contato comigo!</p>
+        {% if messages %}
+            <div class="messages grid place-content-center">
+                {% for message in messages %}
+                    <div {% if message.tags %} class="{{ message.tags }} bg-slate-700 py-3 px-5 mx-5 rounded-lg flex items-center justify-center text-sm md:text-base"{% endif %}>
+                        <p class="">
+                            <i class="fa-regular fa-bell"></i> {{ message }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form class="flex-col p-5"
+              action="/contact"
+              name="contactForm"
+              method="POST"
+              onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="name">
+                <label for="name">👤 Seu nome</label>
+                <br>
+                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
+                       type="text"
+                       id="name"
+                       placeholder="Seu nome"
+                       name="name">
+            </div>
+            <div class="email">
+                <label for="email">📧 Seu email</label>
+                <br>
+                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
+                       type="text"
+                       id="email"
+                       placeholder="Seu email"
+                       name="email">
+            </div>
+            <div class="phone">
+                <label for="phone">📱 Seu telefone (opcional)</label>
+                <br>
+                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
+                       type="text"
+                       id="phone"
+                       placeholder="Seu telefone"
+                       name="phone">
+            </div>
+            <div class="message">
+                <label for="message">💬 Sua mensagem</label>
+                <br>
+                <textarea class="p-3 resize-none w-full h-72 my-2 bg-gray-900 border-slate-700 rounded-lg"
+                          placeholder="Sua mensagem"
+                          name="message"></textarea>
+            </div>
+            <button type="submit"
+                    class="bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-3">
+                <i class="fa-regular fa-paper-plane"></i> Enviar mensagem
+            </button>
+        </form>
+    </div>
+{% endblock %}

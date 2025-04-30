@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block content %}
+    <div class='hero-section bg-gray-800 text-white text-center flex flex-col justify-center items-center h-[550px] md:h-[580px] lg:h-[600px]'>
+        <h1 class="z-40 text-3xl md:text-4xl lg:text-5xl font-poppins font-extrabold px-4 md:px-24 lg:px-40 xl:px-52 2xl:px-80 text-center mb-4">
+            Oi, eu sou o <span class="bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 text-transparent">Stévillis</span>!
+        </h1>
+        <p class="max-w-2xl text-base md:text-lg lg:text-xl font-normal text-justify px-4 md:px-0 mb-6">
+            Analista de Sistemas e Cientista de Dados com experiência em Desenvolvimento Web, ETL, Machine Learning, Processamento de Linguagem Natural e
+            criação Dashboards.
+        </p>
+        <p class="max-w-2xl text-base md:text-lg lg:text-xl font-normal text-justify px-4 md:px-0 mb-6">
+            Aqui compartilho meus projetos e escrevo sobre assuntos de tecnologia que acho interessantes.
+        </p>
+        <div class='hero-btn my-3 md:mt-2 font-bold text-sm md:text-[16px] md:leading-6'>
+            <ul class='flex flex-row gap-4 md:space-x-2'>
+                <a href="https://cdn.jsdelivr.net/gh/hostmind/host/static/Stévillis-Resume.pdf"
+                   download>
+                    <div class='relative group'>
+                        <div class='bg-gradient-to-r from-cyan-300 to-blue-600 px-6 py-2 text-white rounded-md -inset-0.5 absolute blur-sm opacity-75 group-hover:-inset-1 transition group-hover:duration-400 group-hover:opacity-90 duration-1000'>
+                        </div>
+                        <button class='relative bg-gray-800 px-7 py-2 text-white rounded-md group-hover:text-gray-50 transition duration-200'>
+                            <i class="bi bi-download font-extrabold"></i> Baixar Currículo
+                        </button>
+                    </div>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!-- Project Section (Manual Cards) -->
+    <div class='project-section bg-gray-700 p-4 text-white'>
+        <span class="grid items-center px-2 text-start md:text-start md:pl-36 text-2xl md:text-3xl lg:text-4xl my-6 md:my-10 font-poppins">🚀 Projetos</span>
+        <div class='projects my-5 flex flex-col md:flex-row gap-x-6 gap-y-4 w-full'>
+            <!-- Project 1 -->
+            <div style="box-shadow:0 5px 30px 0 rgba(0,0,0,.05)"
+                 class="flex-1 flex flex-col bg-gray-900 p-5 rounded-lg shadow-lg max-w-sm mx-auto md:mx-0">
+                <img class="post-img-url rounded-lg object-cover w-full h-44 mb-3"
+                     src="{% static 'images/glassdoor_reviews_report.png' %}"
+                     alt="Análise de Sentimentos em Avaliações do Glassdoor">
+                <span class="text-blue-100 hover:text-blue-300 transition duration-300 text-xl font-extrabold">Análise de Sentimentos em Avaliações do Glassdoor</span>
+                <p class='my-3 text-sm text-justify'>
+                    Ferramenta para análise de sentimentos, utilizando ajuste fino do modelo BERTimbau, para classificar emoções em avaliações
+                    do Glassdoor de empresas de TI de Cuiabá.
+                </p>
+                <p class='my-3 text-sm text-justify'>
+                    O projeto inclui automação da coleta de dados, treinamento de modelos da arquitetura Transformer e visualização interativa dos resultados em um dashboard intuitivo.
+                </p>
+                <ul class='mb-3 text-xs'>
+                    <li>&#9989; Coleta automatizada de dados do Glassdoor</li>
+                    <li>&#9989; Treinamento e ajuste fino de modelos Transformer</li>
+                    <li>&#9989; Dashboard interativo para análise dos resultados</li>
+                </ul>
+                <span class='text-base font-bold'>Principais tecnologias usadas</span>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-brands fa-python"></i> Python</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-fire-flame-curved"></i> PyTorch</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-database"></i> Pandas</span>
+                </div>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-chart-line"></i> Matplotlib</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-water"></i> Seaborn</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-bolt"></i> Streamlit</span>
+                </div>
+                <div class='flex space-x-2 mt-auto'>
+                    <a href='https://github.com/stevillis/glassdoor-reviews-report/'
+                       target='_blank'>
+                        <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-slate-700 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-2 text-xs'>
+                            <i class="bi bi-github"></i> Github
+                        </button>
+                    </a>
+                    <a href='https://glassdoor-reviews-report.streamlit.app/'
+                       target='_blank'>
+                        <button class='bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-2 text-xs'>
+                            Demo <i class="bi bi-box-arrow-up-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div style="box-shadow:0 5px 30px 0 rgba(0,0,0,.05)"
+                 class="flex-1 flex flex-col bg-gray-900 p-5 rounded-lg shadow-lg max-w-sm mx-auto md:mx-0">
+                <img class="post-img-url rounded-lg object-cover w-full h-44 mb-3"
+                     src="{% static 'images/stevillis_site.png' %}"
+                     alt="Site para pessoal para cadastrar cursos e formações">
+                <span class="text-blue-100 hover:text-blue-300 transition duration-300 text-xl font-extrabold">Gestor Pessoal de Cursos</span>
+                <p class='my-3 text-sm text-justify'>
+                    Aplicação web para gerenciar e visualizar cursos e formações da minha trajetória profissional.
+                </p>
+                <p class='my-3 text-sm text-justify'>
+                    Permite cadastrar, editar e consultar informações de cursos, categorias, instituições e formações, com interface administrativa e
+                    visualização pública.
+                </p>
+                <ul class='mb-3 text-xs'>
+                    <li>&#9989; Cadastro e edição de cursos e formações</li>
+                    <li>&#9989; Interface administrativa via Django Admin</li>
+                    <li>&#9989; Visualização pública dos dados</li>
+                </ul>
+                <span class='text-base font-bold'>Principais tecnologias usadas</span>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-brands fa-python"></i> Python</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-brands fa-python"></i> Django</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+                </div>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-brands fa-css3-alt"></i> Tailwind CSS</span>
+                </div>
+                <div class='flex space-x-2 mt-auto'>
+                    <a href='https://github.com/stevillis/stevillis-site' target='_blank'>
+                        <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-slate-700 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-2 text-xs'>
+                            <i class="bi bi-github"></i> Github
+                        </button>
+                    </a>
+                    <a href='https://stevillis.up.railway.app/' target='_blank'>
+                        <button class='bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-2 text-xs'>
+                            Demo <i class="bi bi-box-arrow-up-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div style="box-shadow:0 5px 30px 0 rgba(0,0,0,.05)"
+                 class="flex-1 flex flex-col bg-gray-900 p-5 rounded-lg shadow-lg max-w-sm mx-auto md:mx-0">
+                <img class="post-img-url rounded-lg object-cover w-full h-44 mb-3"
+                     src="{% static 'images/titanic_data_viz.png' %}"
+                     alt="Análise de Dados do Titanic">
+                <span class="text-blue-100 hover:text-blue-300 transition duration-300 text-xl font-extrabold">Análise de Dados do Titanic</span>
+                <p class='my-3 text-sm text-justify'>
+                    Análise dos dados do naufrágio do Titanic, destacando como fatores como idade, sexo, classe social e local de embarque
+                    influenciaram as chances de sobrevivência dos passageiros.
+                </p>
+                <p class='my-3 text-sm text-justify'>
+                    Pré-processamento dos dados, gráficos dinâmicos e um modelo preditivo baseado em regressão logística para estimar a probabilidade de sobrevivência.
+                </p>
+                <ul class='mb-3 text-xs'>
+                    <li>&#9989; Pré-processamento dos dados</li>
+                    <li>&#9989; Histogramas, mapas de calor</li>
+                    <li>&#9989; Modelo preditivo de sobrevivência com regressão logística</li>
+                </ul>
+                <span class='text-base font-bold'>Principais tecnologias usadas</span>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-brands fa-python"></i> Python</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-database"></i> Pandas</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-chart-line"></i> Matplotlib</span>
+                </div>
+                <div class='flex space-x-2 my-2'>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-water"></i> Seaborn</span>
+                    <span class="text-xs md:text-sm whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-500 py-1 px-2 md:px-4 rounded-full"><i class="fa-solid fa-bolt"></i> Streamlit</span>
+                </div>
+                <div class='flex space-x-2 mt-auto'>
+                    <a href='https://github.com/stevillis/titanic-data-viz/'
+                       target='_blank'>
+                        <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-slate-700 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-2 text-xs'>
+                            <i class="bi bi-github"></i> Github
+                        </button>
+                    </a>
+                    <a href='https://stevillis-titanic-data-viz.streamlit.app/' target='_blank'>
+                        <button class='bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-2 text-xs'>
+                            Demo <i class="bi bi-box-arrow-up-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class='flex justify-center'>
+            <a href="/projects" class="">
+                <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-blue-600 transition delay-75 ease-in-out my-3'>
+                    Ver todos <i class="bi bi-arrow-clockwise font-extrabold"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class='blog-section bg-gray-800 p-4 text-white'>
+        <span class="grid items-center px-2 text-start md:text-start md:pl-36 text-2xl md:text-3xl lg:text-4xl my-6 md:my-10 font-poppins">📝 Publicações mais recentes</span>
+        <div class='blogs my-5 grid justify-center md:flex md:space-x-6'>
+            {% for blog in random_blogs|slice:3 %}
+                <div style="box-shadow:0 5px 30px 0 rgba(0,0,0,.05)"
+                     class='hover:scale-105 hover:transform bg-gray-800 p-5 rounded-lg max-w-sm h-auto shadow-2xl transition-all duration-300'>
+                    <a href="{% url 'blogpost' blog.slug %}">
+                        <img class='rounded-lg mb-4' src="{{ blog.thumbnail_url }}">
+                    </a>
+                    <a class='text-blue-100 hover:text-blue-300 transition duration-300'
+                       href='/blogpost/{{ blog.slug }}'><span class='text-xl font-extrabold'>{{ blog.title|slice:80 }}</span></a>
+                    <br>
+                    <p class='my-3'>{{ blog.meta|slice:180|safe }}</p>
+                    <p class='mt-2 mb-4 text-gray-400'>
+                        por  <i class="bi bi-person"></i>  <a href='/about' class='group transition-all duration-500 ease-out'><span class='bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out group-hover:text-cyan-200'>Stévillis</span></a> <i class="bi bi-dot"></i> <span><i class="bi bi-calendar4-event"></i> {{ blog.created_at }}</span> <i class="bi bi-dot"></i><i class="bi bi-tag"></i> <a href="{% url 'category' blog.category %}"
+    class='group transition-all duration-500 ease-out'><span class='bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out group-hover:text-cyan-200'>{{ blog.category }}</span></a>
+                    </p>
+                    <a href="{% url 'blogpost' blog.slug %}">
+                        <button class='bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-3'>
+                            Ver mais <i class="bi bi-arrow-right font-extrabold"></i>
+                        </button>
+                    </a>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+        <div class='flex justify-center'>
+            <a href="{% url 'blog' %}" class="">
+                <button class='bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-blue-600 transition delay-75 ease-in-out my-3'>
+                    Carregar mais <i class="bi bi-arrow-clockwise font-extrabold"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
