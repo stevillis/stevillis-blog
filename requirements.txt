@@ -3,5 +3,6 @@ django-tailwind==4.0.1
 django-tinymce==4.1.0
 Django==5.2
 gunicorn==23.0.0
+pillow==11.2.1
 psycopg2-binary==2.9.10
 whitenoise==6.9.0
