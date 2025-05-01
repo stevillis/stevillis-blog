@@ -33,8 +33,8 @@ cd stevillis-blog/
 
 ## 4. Set Up Python Virtual Environment
 ```bash
-python3 -m venv venv_stevillis_blog
-source venv_stevillis_blog/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 ## 5. Install Python Requirements
@@ -134,7 +134,7 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/stevillis-blog
-ExecStart=/home/ubuntu/stevillis-blog/venv_stevillis_blog/bin/gunicorn -w 3 --bind localhost:8000 app.wsgi:application
+ExecStart=/home/ubuntu/stevillis-blog/venv/bin/gunicorn -w 3 --bind localhost:8000 app.wsgi:application
 Restart=always
 
 Environment="DB_NAME=DB_NAME"
