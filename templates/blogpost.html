@@ -3,41 +3,58 @@
     {{ blog.title }}
 {% endblock title %}
 {% block content %}
-    <div class="bg-gray-800 text-white p-8 pt-12 flex flex-col md:px-20 lg:px-36 xl:px-60 2xl:px-80">
-        <span class="text-center text-3xl md:text-4xl font-bold text-cyan-200 hover:text-cyan-300 transition duration-300">📰 <a href="/">Home</a></span>
-        <span class="text-center mt-2 text-gray-400">por <a href="{% url 'about' %}"><i class="bi bi-person"></i> <span class="group"><span class="group-hover:text-cyan-200 bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Stévillis</span></span></a> <i class="bi bi-dot"></i> <span><i class="bi bi-calendar4-event"></i> {{ blog.created_at }}</span> <i class="bi bi-dot"></i> <i class="bi bi-tag"></i> <a href="{% url 'category' blog.category %}"><span class="group"><span class="group-hover:text-cyan-200 bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">{{ blog.category }}</span></span></a>
-        <img class="rounded-lg my-6 flex justify-center"
-             src="{{ blog.thumbnail_url }}">
-        <p class="">{{ blog.content|safe }}</p>
+    <div class="bg-white min-h-screen py-10 px-2 md:px-0">
+        <div class="mx-auto text-gray-900 p-6 md:p-10 w-4/5 max-w-6xl">
+            <div class="flex flex-col items-center">
+                <span class="text-blue-700 text-3xl md:text-4xl font-extrabold mb-2 text-center">{{ blog.title }}</span>
+                <div class="flex flex-row justify-center items-center gap-1 w-full text-gray-500 text-sm mb-4 text-center">
+                    <div class="flex items-center gap-1">
+                        <i class="bi bi-calendar4-event"></i> {{ blog.created_at }}
+                    </div>
+                    <i class="bi bi-dot text-gray-500 mx-2"></i>
+                    <div class="flex items-center gap-1">
+                        <i class="bi bi-tag"></i>
+                        <a href="{% url 'category' blog.category %}" class="group">
+                            <span class="group-hover:text-cyan-200 bg-left-bottom bg-gradient-to-r from-cyan-300 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">{{ blog.category }}</span>
+                        </a>
+                    </div>
+                </div>
+                <img class="post-img-url rounded-lg object-cover w-full h-60 mb-6"
+                     src="{{ blog.thumbnail_url }}"
+                     alt="Imagem do post {{ blog.title }}">
+            </div>
+            <div class="prose prose-blue max-w-none text-justify text-base md:text-lg lg:text-xl"
+                 style="color:inherit">{{ blog.content|safe }}</div>
+            <div class="mt-8 flex justify-center">
+                <a href="/blog" class="">
+                    <button class="bg-blue-600 text-white p-2 px-4 rounded-[6px] hover:bg-blue-700 hover:text-white transition delay-75 ease-in-out my-3">
+                        Ver mais posts
+                    </button>
+                </a>
+            </div>
+        </div>
+        <style>
+            .prose img {
+                border-radius: 8px;
+                margin: 1.5rem auto;
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+            .prose a {
+                color: #2563eb;
+                text-decoration: underline;
+                transition: color 0.2s;
+            }
+            .prose a:hover {
+                color: #0ea5e9;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: revert;
+                font-weight: revert;
+                margin-top: 1.5em;
+                margin-bottom: 0.5em;
+    }
+        </style>
     </div>
-    <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: revert;
-        font-weight: revert;
-    }
-
-    p a {
-        color: #67e8f9;
-        background:
-          linear-gradient(to right, rgba(103,232,249, 1), rgba(59, 130, 246, 1)),
-          linear-gradient(to right, rgba(34,211,238, 1), rgba(59, 130, 246, 1), rgba(29, 78, 216, 1));
-        background-size: 100% 0.1em, 0 0.1em;
-        background-position: 100% 100%, 0 100%;
-        background-repeat: no-repeat;
-        transition: background-size 400ms;
-    }
-
-    p a:hover,
-    p a:focus {
-        background-size: 0 0.1em, 100% 0.1em;
-    }
-    p img {
-        border-radius: 8px;
-    }
-    </style>
 {% endblock %}

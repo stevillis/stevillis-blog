@@ -136,6 +136,10 @@ LANGUAGE_CODE = "pt-br"
 
 TIME_ZONE = "America/Cuiaba"
 
+# Custom date formats
+DATE_FORMAT = "d/m/Y"
+DATETIME_FORMAT = "d/m/Y H:i:s"
+
 USE_I18N = True
 
 USE_TZ = True

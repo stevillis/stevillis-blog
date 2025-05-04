@@ -12,16 +12,8 @@ from home.models import Blog
 
 # Create your views here.
 def index(request):
-    blogs = Blog.objects.all()
-    len_blogs = len(blogs)
-    load_max_blogs = 3 if len_blogs > 3 else len_blogs
-    random_blogs = []
-
-    if blogs:
-        random_blogs = random.sample(list(blogs), load_max_blogs)
-
-    context = {"random_blogs": random_blogs}
-
+    recent_blogs = Blog.objects.all().order_by("-created_at")[:3]
+    context = {"recent_blogs": recent_blogs}
     return render(request, "index.html", context)
 
 
@@ -90,7 +82,7 @@ def projects(request):
 
 def blog(request):
     blogs = Blog.objects.all().order_by("-created_at")
-    paginator = Paginator(blogs, 3)
+    paginator = Paginator(blogs, 10)
     page = request.GET.get("page")
     blogs = paginator.get_page(page)
     context = {"blogs": blogs}
