@@ -10,7 +10,7 @@
             <div class="messages grid place-content-center">
                 {% for message in messages %}
                     <div {% if message.tags %} class="{{ message.tags }} bg-slate-700 py-3 px-5 mx-5 rounded-lg flex items-center justify-center text-sm md:text-base"{% endif %}>
-                        <p class="">
+                        <p>
                             <i class="fa-regular fa-bell"></i> {{ message }}
                         </p>
                     </div>
@@ -18,7 +18,7 @@
             </div>
         {% endif %}
         <form class="flex-col p-5"
-              action="/contact"
+              action="{% url 'contact' %}"
               name="contactForm"
               method="POST"
               onsubmit="return validateForm()">

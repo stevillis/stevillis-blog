@@ -26,7 +26,7 @@
             <div class="prose prose-blue max-w-none text-justify text-base md:text-lg lg:text-xl"
                  style="color:inherit">{{ blog.content|safe }}</div>
             <div class="mt-8 flex justify-center">
-                <a href="/blog" class="">
+                <a href="{% url 'blog' %}">
                     <button class="bg-blue-600 text-white p-2 px-4 rounded-[6px] hover:bg-blue-700 hover:text-white transition delay-75 ease-in-out my-3">
                         Ver mais posts
                     </button>
