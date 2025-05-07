@@ -3,11 +3,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8HN5PP8M8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q8HN5PP8M8');
+    </script>
     <meta charset="UTF-8">
-    <meta name="description"
-          content="Portfólio de Stévillis Sousa - Cientista de Dados apaixonado por tecnologia, inovação e criatividade.">
+    <meta name="description" content="Stévillis Sousa">
     <meta name="keywords"
-          content="Stévillis, portfólio, ciência de dados, tecnologia, inovação, criatividade, blog, projetos">
+          content="Stévillis, portfólio, ciência de dados, analista de sistemas, projetos">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
@@ -57,16 +65,17 @@
       <a href="{% url 'home' %}"
          class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800">Home</a>
       <a href="{% url 'projects' %}"
-         class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800 ">Projetos</a>
+         class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800">Projetos</a>
       <a href="{% url 'blog' %}"
-         class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800 ">Blog</a>
+         class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800">Blog</a>
       <a href="{% url 'about' %}"
          class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800">Sobre</a>
       <a href="{% url 'contact' %}"
          class="p-2 px-36 my-1 text-white rounded-[8px] hover:bg-gray-800">Contato</a>
     </div>
     <main class="flex-grow">
-      {% block content %}{% endblock %}
+      {% block content %}
+      {% endblock content %}
     </main>
     <footer class="bg-gray-900 text-white flex flex-col items-center justify-center">
       <div class="socials flex flex-col items-center">
@@ -95,7 +104,7 @@
       </div>
     </footer>
     <div class="bg-gray-900 text-white text-justify flex justify-center items-center">
-      <p class="p-2 text-xs">© {% now 'Y' %} Stévillis Sousa</p>
+      <p class="p-2 text-xs">© {% now "Y" %} Stévillis Sousa</p>
     </div>
     <div class="searchModal text-white z-50 fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
       <div class="fixed inset-0 transition-opacity">
@@ -122,32 +131,32 @@
                   aria-label="Close">
             <i class="bi bi-x text-xl"></i>
           </button>
-          <div class='mx-3'>
-            <div class='flex md:flex-grow-2 justify-start space-x-3 text-sm md:text-base m-4 -mt-10 mb-8'>
-              <a href="/category/Python" class="sm:text-[12px]">
+          <div class="mx-3">
+            <div class="flex md:flex-grow-2 justify-start space-x-3 text-sm md:text-base m-4 -mt-10 mb-8">
+              <a href="{% url 'category' 'Python' %}" class="sm:text-[12px]">
                 <button class="bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3">
                   Python
                 </button>
               </a>
-              <a href="/category/Django" class="sm:text-[12px]">
+              <a href="{% url 'category' 'Django' %}" class="sm:text-[12px]">
                 <button class="bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3">
                   Django
                 </button>
               </a>
-              <a href="/category/Streamlit" class="sm:text-[12px]">
+              <a href="{% url 'category' 'Streamlit' %}" class="sm:text-[12px]">
                 <button class="bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3">
                   Streamlit
                 </button>
               </a>
             </div>
             <div class="flex md:flex-grow-2 justify-start space-x-3 text-sm md:text-base m-4 -mt-10">
-              <a href="/category/Processamento de Linguagem Natural"
+              <a href="{% url 'category' 'Processamento de Linguagem Natural' %}"
                  class="sm:text-[12px]">
                 <button class="bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3">
                   Processamento de Linguagem Natural
                 </button>
               </a>
-              <a href="/category/Machine Learning"  class="sm:text-[12px]">
+              <a href="{% url 'category' 'Machine Learning' %}" class="sm:text-[12px]">
                 <button class="bg-gray-800 p-2 px-4 rounded-[6px] hover:bg-blue-600 outline hover:outline-none outline-slate-700 transition delay-75 ease-in-out my-3">
                   Machine Learning
                 </button>
