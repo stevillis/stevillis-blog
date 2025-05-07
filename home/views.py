@@ -1,12 +1,11 @@
-import random
-import re
-
+from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
+from home.forms import ContactForm
 from home.models import Blog
 
 
@@ -27,53 +26,42 @@ def thanks(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        phone = request.POST.get("phone")
-        message = request.POST.get("message")
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            phone = form.cleaned_data["phone"]
+            message = form.cleaned_data["message"]
 
-        invalid_input = ["", " "]
-        if (
-            name in invalid_input
-            or email in invalid_input
-            # or phone in invalid_input
-            or message in invalid_input
-        ):
-            messages.error(request, "Um ou mais campos estão vazios!")
-        else:
-            email_pattern = re.compile(
-                r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            subject = f"Contato do site - {name}"
+            body = (
+                f"Nome: {name}\nEmail: {email}\nTelefone: {phone}\nMensagem: {message}"
             )
-            # phone_pattern = re.compile(r"^[0-9]{10}$")
 
-            if email_pattern.match(email):
-                form_data = {
-                    "name": name,
-                    "phone": phone,
-                    "email": email,
-                    "message": message,
-                }
-
-                message = f"""
-                From:\n\t\t{form_data["name"]}\n
-                Message:\n\t\t{form_data["message"]}\n
-                Email:\n\t\t{form_data["email"]}\n
-                Phone:\n\t\t{form_data["phone"]}\n
-                """
-
+            try:
                 send_mail(
-                    subject="Alguém te mandou um email via site!",
-                    from_email=email,
-                    message=message,
-                    recipient_list=["stevillis@hotmail.com"],
+                    subject=subject,
+                    message=body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_EMAIL_RECIPIENT],
+                    fail_silently=False,
+                )
+                messages.success(
+                    request,
+                    "Mensagem enviada com sucesso! Em breve entrarei em contato com você. 😊",
                 )
 
-                messages.success(request, "Mensagem enviada com sucesso!")
-                # return HttpResponseRedirect('/thanks')
-            else:
-                messages.error(request, "Email ou telefone inválido!")
+                return redirect("contact")
+            except Exception:
+                messages.error(
+                    request, "Erro ao enviar e-mail. Por favor, tente novamente."
+                )
 
-    return render(request, "contact.html")
+                return redirect("contact")
+    else:
+        form = ContactForm()
+
+    return render(request, "contact.html", {"form": form})
 
 
 def projects(request):

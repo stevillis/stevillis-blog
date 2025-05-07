@@ -1,15 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %}
     Contato
 {% endblock title %}
 {% block content %}
     <div class="bg-gray-800 text-white p-3 md:px-10 lg:px-20 xl:px-40 2xl:px-72">
         <p style="font-family: Poppins-Bold"
-           class="text-4xl font-extrabold py-5 text-center md:text-start">📬 Entre em contato comigo!</p>
+           class="text-4xl font-extrabold py-5 text-center md:text-start">📬 Contato por e-mail ou WhatsApp!</p>
         {% if messages %}
             <div class="messages grid place-content-center">
                 {% for message in messages %}
-                    <div {% if message.tags %} class="{{ message.tags }} bg-slate-700 py-3 px-5 mx-5 rounded-lg flex items-center justify-center text-sm md:text-base"{% endif %}>
+                    <div {% if message.tags %} class="{{ message.tags }} bg-green-600 py-3 px-5 mx-5 rounded-lg flex items-center justify-center text-sm md:text-base"{% endif %}>
                         <p>
                             <i class="fa-regular fa-bell"></i> {{ message }}
                         </p>
@@ -20,47 +20,83 @@
         <form class="flex-col p-5"
               action="{% url 'contact' %}"
               name="contactForm"
-              method="POST"
-              onsubmit="return validateForm()">
+              method="post"
+              id="contactForm">
             {% csrf_token %}
             <div class="name">
-                <label for="name">👤 Seu nome</label>
+                <label for="id_name">
+                    👤 Nome <span class="text-gray-400">*</span>
+                </label>
                 <br>
-                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
-                       type="text"
-                       id="name"
-                       placeholder="Seu nome"
-                       name="name">
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div>
+                        <p class="text-sm text-red-400 mb-4 md:text-base">{{ form.name.errors.0 }}</p>
+                    </div>
+                {% endif %}
             </div>
             <div class="email">
-                <label for="email">📧 Seu email</label>
+                <label for="id_email">
+                    📧 Email <span class="text-gray-400">*</span>
+                </label>
                 <br>
-                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
-                       type="text"
-                       id="email"
-                       placeholder="Seu email"
-                       name="email">
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div>
+                        <p class="text-sm text-red-400 mb-4 md:text-base">{{ form.email.errors.0 }}</p>
+                    </div>
+                {% endif %}
             </div>
             <div class="phone">
-                <label for="phone">📱 Seu telefone (opcional)</label>
+                <label for="id_phone">📱 Telefone</label>
                 <br>
-                <input class="p-3 w-full my-2 bg-gray-900 border-slate-700 rounded-lg"
-                       type="text"
-                       id="phone"
-                       placeholder="Seu telefone"
-                       name="phone">
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div>
+                        <p class="text-sm text-red-400 mb-4 md:text-base">{{ form.phone.errors.0 }}</p>
+                    </div>
+                {% endif %}
             </div>
             <div class="message">
-                <label for="message">💬 Sua mensagem</label>
+                <label for="id_message">
+                    💬 Mensagem <span class="text-gray-400">*</span>
+                </label>
                 <br>
-                <textarea class="p-3 resize-none w-full h-72 my-2 bg-gray-900 border-slate-700 rounded-lg"
-                          placeholder="Sua mensagem"
-                          name="message"></textarea>
+                {{ form.message }}
+                {% if form.message.errors %}
+                    <div>
+                        <p class="text-sm text-red-400 mb-4 md:text-base">{{ form.message.errors.0 }}</p>
+                    </div>
+                {% endif %}
             </div>
+            <p class="text-sm text-gray-400 mb-2">* Campos obrigatórios</p>
             <button type="submit"
                     class="bg-blue-600 p-2 px-4 rounded-[6px] hover:bg-gray-800 hover:outline hover:outline-blue-600 transition delay-75 ease-in-out my-3">
-                <i class="fa-regular fa-paper-plane"></i> Enviar mensagem
+                <i class="fa fa-paper-plane"></i> Enviar e-mail
             </button>
         </form>
+        <a href="https://wa.me/+5565984064574?text=Olá! Vim através do seu site."
+           class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center w-16 h-16 z-50 transition-all duration-300 hover:scale-110"
+           target="_blank"
+           rel="noopener noreferrer">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
     </div>
-{% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("contactForm");
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            form.addEventListener("submit", function(e) {
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fa fa-spinner"></i> Enviando...';
+            });
+
+            // Reset button on form reset
+            form.addEventListener("reset", function() {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fa fa-paper-plane"></i> Enviar e-mail';
+            });
+        });
+    </script>
+{% endblock content %}

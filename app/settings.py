@@ -162,14 +162,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# EMAIL CONFIGURATION (for contact form) # TODO: configure email
+# Email configuration using SMTP2GO with domain email (for contact form)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "youremail@gmail.com"
-EMAIL_HOST_PASSWORD = "yourpassword"
-EMAIL_PORT = 587
+EMAIL_HOST = "mail.smtp2go.com"
+EMAIL_HOST_USER = os.getenv("SMTP2GO_USER")
+EMAIL_HOST_PASSWORD = os.getenv("SMTP2GO_PASSWORD")
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "password"
+
+# Contact form email settings
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+CONTACT_EMAIL_RECIPIENT = os.getenv("CONTACT_EMAIL_RECIPIENT")
 
 # TinyMCE
 TINYMCE_JS_URL = "https://cdn.tiny.cloud/1/z4ov5j6rhpqqo89y6hwcmu5ifcsoydke03ugyto9nnnxhvtg/tinymce/5/tinymce.min.js"
